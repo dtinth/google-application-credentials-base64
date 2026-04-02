@@ -1,38 +1,45 @@
 {
   "name": "google-application-credentials-base64",
   "version": "0.0.0",
-  "files": [
-    "src",
-    "lib",
-    "lib-commonjs",
-    "dist"
-  ],
-  "main": "./lib-commonjs/index.js",
-  "module": "./lib/index.js",
-  "types": "./dist/google-application-credentials-base64.d.ts",
-  "docModel": "./dist/google-application-credentials-base64.api.json",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dtinth/google-application-credentials-base64.git"
-  },
   "homepage": "https://github.com/dtinth/google-application-credentials-base64#readme",
   "bugs": {
     "url": "https://github.com/dtinth/google-application-credentials-base64/issues"
   },
-  "devDependencies": {
-    "@changesets/cli": "2.25.0",
-    "@rushstack/heft": "0.48.7",
-    "@rushstack/heft-web-rig": "0.12.10",
-    "@types/heft-jest": "1.0.3",
-    "@types/node": "^18.11.9",
-    "prettier": "2.7.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtinth/google-application-credentials-base64.git"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "heft build",
-    "test": "heft test",
-    "prepare": "heft build && ./scripts/generate-api-docs",
+    "build": "vp pack",
+    "test": "vp test",
+    "prepare": "vp config",
     "release": "./scripts/release",
     "format": "prettier --write .",
-    "api": "./scripts/generate-api-docs"
+    "api": "./scripts/generate-api-docs",
+    "dev": "vp pack --watch",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0",
+    "@types/node": "^24.0.0",
+    "@typescript/native-preview": "7.0.0-dev.20260328.1",
+    "vite-plus": "^0.1.14"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
   }
 }

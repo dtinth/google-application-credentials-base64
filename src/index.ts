@@ -13,18 +13,15 @@
  * @packageDocumentation
  */
 
-import fs from 'fs'
+import fs from "fs";
 
 if (
   process.env.GOOGLE_APPLICATION_CREDENTIALS &&
   process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64 &&
   !fs.existsSync(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 ) {
-  const data = Buffer.from(
-    process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64,
-    'base64',
-  ).toString()
-  fs.writeFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS, data, 'utf8')
+  const data = Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64, "base64").toString();
+  fs.writeFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS, data, "utf8");
 }
 
-export {}
+export {};

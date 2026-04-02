@@ -27,15 +27,15 @@ This is fine for local development. However, when it comes time to deploy to a s
 
 1. Base64-encoded the contents of your service account key file.
 
-    ```sh
-    base64 < service-account-key.json
-    ```
+   ```sh
+   base64 < service-account-key.json
+   ```
 
 2. Set the following environment variables:
 
-    ```
-    GOOGLE_APPLICATION_CREDENTIALS_BASE64=<base64-encoded-service-account-key>
-    GOOGLE_APPLICATION_CREDENTIALS=/tmp/service-account-key.json
-    ```
+   ```
+   GOOGLE_APPLICATION_CREDENTIALS_BASE64=<base64-encoded-service-account-key>
+   GOOGLE_APPLICATION_CREDENTIALS=/tmp/service-account-key.json
+   ```
 
-    **Note:** [Putting credentials in `/tmp` is generally considered a security risk.](https://owasp.org/www-community/vulnerabilities/Insecure_Temporary_File) However, on serverless/containerized environment, the `/tmp` folder is not shared between instances. Therefore, it is safe to use `/tmp` as a temporary location for the service account key file in this case.
+   **Note:** [Putting credentials in `/tmp` is generally considered a security risk.](https://owasp.org/www-community/vulnerabilities/Insecure_Temporary_File) However, on serverless/containerized environment, the `/tmp` folder is not shared between instances. Therefore, it is safe to use `/tmp` as a temporary location for the service account key file in this case.
