@@ -25,7 +25,7 @@ This is fine for local development. However, when it comes time to deploy to a s
 
 ## How to use
 
-1. Base64-encoded the contents of your service account key file.
+1. Base64-encode the contents of your service account key file.
 
    ```sh
    base64 < service-account-key.json
@@ -39,3 +39,11 @@ This is fine for local development. However, when it comes time to deploy to a s
    ```
 
    **Note:** [Putting credentials in `/tmp` is generally considered a security risk.](https://owasp.org/www-community/vulnerabilities/Insecure_Temporary_File) However, on serverless/containerized environment, the `/tmp` folder is not shared between instances. Therefore, it is safe to use `/tmp` as a temporary location for the service account key file in this case.
+
+3. Import the package at the top of your application entry point:
+
+   ```js
+   import "google-application-credentials-base64";
+   ```
+
+   This import will trigger the side effect of writing the decoded credentials to the file path specified by `GOOGLE_APPLICATION_CREDENTIALS`.
